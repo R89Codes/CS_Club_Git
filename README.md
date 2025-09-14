@@ -14,6 +14,7 @@ You can either (A) create your own small file or (B) add one line to `learning_g
 ## ✅ Prerequisites
 - A GitHub account (logged in)
 - Git installed on your computer (Windows: Git Bash; macOS/Linux: Terminal)
+- *(Optional)* GitHub CLI installed and logged in once: `gh auth login`
 
 ---
 
@@ -65,7 +66,6 @@ echo "I want to learn about Web Development and AI." > goals_yourname.txt
 
 ### 5) Stage your change (tell Git what to include)
 ```bash
-
 git add goals_yourname.txt
 # or
 git add learning_goals.md
@@ -92,16 +92,35 @@ git push origin yourname-goals
 ---
 
 ### 8) Open a Pull Request (PR) to the main club repo
+
+#### Using GitHub CLI (fastest)
+```bash
+gh pr create --base main --head yourname-goals   --title "Learning Goals – Your Name"   --body "Adds my learning goal"
+```
+> Requires GitHub CLI (`gh`) and `gh auth login` done once.
+
+#### Using the Web UI
 1. Go to **your fork** on GitHub.  
-2. You’ll see a prompt to open a PR → click **Compare & pull request**.  
+2. Click **Compare & pull request**.  
 3. Check the targets carefully:
-   - **Base repository:** `<club-org-or-owner>/CS-Club-Git-Practice`  
-   - **Base branch:** `main`  
-   - **Compare:** `yourname-goals` (your branch)  
-4. Title suggestion: **Learning Goals – Your Name**  
+   - **Base repository:** `<club-org-or-owner>/CS-Club-Git-Practice`
+   - **Base branch:** `main`
+   - **Compare:** `yourname-goals` (your branch)
+4. Title suggestion: **Learning Goals – Your Name**
 5. Click **Create pull request**. 🎉
 
 After a reviewer merges it, your contribution appears in the main repo.
+
+---
+
+## 🔁 Updating your PR (if asked for changes)
+Make edits locally, then push again to the **same branch**:
+```bash
+git add <file>
+git commit -m "Address review feedback"
+git push origin yourname-goals
+```
+Your PR updates automatically—no need to open a new one.
 
 ---
 
@@ -109,12 +128,11 @@ After a reviewer merges it, your contribution appears in the main repo.
 - John Doe: I want to improve my Git skills and learn AI.
 - Jane Smith: I want to build a project using APIs.
 
-
 ---
 
 ## 🆘 Quick Troubleshooting
 - **Permission denied / auth errors** → Make sure you’re pushing to **your fork** (`origin`), not the club repo.  
-- **Nothing to commit** → You forgot step 4 or step 5 (`git add .`).  
+- **Nothing to commit** → You forgot step 4 or 5 (`git add <file>`).  
 - **Wrong base/compare in PR** → Set **base** to the club repo’s `main`, **compare** to your branch on your fork.  
 - **Merge conflicts** → Ask a mentor; we’ll resolve it together in session.
 
